@@ -2,7 +2,11 @@ package com.crashreport;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 
+import com.crashreport.utils.LogUtils;
+
 import android.content.Context;
+import android.os.Looper;
+import android.widget.Toast;
 
 public class CrashHandler implements UncaughtExceptionHandler{
 
@@ -30,9 +34,11 @@ public class CrashHandler implements UncaughtExceptionHandler{
 		//获取系统默认的UncaughtException处理器
 		mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
 		//设置该CrashHandler为程序的默认处理器
-		Thread.setDefaultUncaughtExceptionHandler(this);
+		Thread.setDefaultUncaughtExceptionHandler(INSTANCE);
 		
-		mCrashReportHelper = new CrashReportHelper(context);
+		//mCrashReportHelper = new CrashReportHelper(context);
+		
+		LogUtils.d("", "-----> 初始化成功");
 	}
 	
 	 /**
@@ -55,13 +61,19 @@ public class CrashHandler implements UncaughtExceptionHandler{
         }
 	}
 	
-	public boolean handleException(Throwable ex){
+	public boolean handleException(final Throwable ex){
 		if (ex == null) {
 			return false;
 		}
-		
-		mCrashReportHelper.mCrashCacheHelper.saveCrash();
-		mCrashReportHelper.mCrashReportApi.doCrashReport(mContext);
+		 //使用Toast来显示异常信息
+        new Thread() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                Toast.makeText(mContext, "很抱歉,程序出现异常,即将退出." + ex.toString(), Toast.LENGTH_LONG).show();
+                Looper.loop();
+            }
+        }.start();
 		
 		return true;
 	}

@@ -6,9 +6,6 @@ import com.crashreport.entity.Strategy;
 import android.content.Context;
 
 public class CrashReport {
-	private CrashReport(){};
-	
-	
 	
 	public static CrashHandler mCrashHandler;
 	
@@ -24,12 +21,12 @@ public class CrashReport {
 		mCrashHandler = CrashHandler.getInstance();
 		mCrashHandler.init(context);
 		
-		if (strategy != null) {
+/*		if (strategy != null) {
 			mStrategy = strategy;
 		}
 		mStrategy = new Strategy();
 		
-		Info.init();
+		Info.init();*/
 		
 		
 	}
