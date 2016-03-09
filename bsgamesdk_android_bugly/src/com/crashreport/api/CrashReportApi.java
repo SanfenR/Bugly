@@ -10,7 +10,7 @@ public class CrashReportApi implements ICrashReportApi{
 
 	@Override
 	public void doCrashReport(Context context) {
-		//上报到服务器
+		//
 	}
 
 }

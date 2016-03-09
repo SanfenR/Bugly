@@ -21,12 +21,14 @@ public class CrashReport {
 		mCrashHandler = CrashHandler.getInstance();
 		mCrashHandler.init(context);
 		
-/*		if (strategy != null) {
+		if (strategy != null) {
 			mStrategy = strategy;
+		}else {
+			mStrategy = new Strategy();
 		}
-		mStrategy = new Strategy();
 		
-		Info.init();*/
+		
+		Info.init(context);
 		
 		
 	}

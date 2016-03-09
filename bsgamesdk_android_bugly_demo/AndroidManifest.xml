@@ -4,12 +4,19 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
+    <!-- bugly -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
 
+   <!-- um  -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="21" />
@@ -20,6 +27,11 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        <!-- um -->
+        <meta-data android:value="56d8fd27e0f55adf5a001975" android:name="UMENG_APPKEY"></meta-data>
+		<meta-data android:value="1" android:name="UMENG_CHANNEL"/>
+        
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >

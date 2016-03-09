@@ -8,15 +8,19 @@ import java.io.IOException;
 import com.crashreport.utils.RootUtils;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
+import android.provider.MediaStore.Images.Thumbnails;
 
 /**
  * 错误信息实体类
  *
  */
 public class Info {
+	
+	public static Context mContext;
 	
 	public static String model;//机型
 	public static String ver; //系统版本
@@ -32,7 +36,8 @@ public class Info {
 	public static String message; //系统错误信息
 	public static String timestamp; //报错时客户端系统时间
 	
-	public static void init(){
+	public static void init(Context context){
+		mContext = context; 
 		model = Build.MODEL;
 		ver = Build.VERSION.RELEASE;
 		root = RootUtils.isDeviceRooted();

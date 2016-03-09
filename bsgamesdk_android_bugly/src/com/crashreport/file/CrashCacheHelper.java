@@ -12,6 +12,6 @@ public class CrashCacheHelper {
 	}
 	
 	public void saveCrash(){
-		//缓存
+		
 	}
 }
